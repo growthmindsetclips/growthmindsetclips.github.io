@@ -1,129 +1,36 @@
 <!doctype html>
+<!-- NOME_DO_APP = GrowthMindsetClips. TROCAR AQUI se o nome no painel do TikTok for outro (title, h1, kicker e rodape). -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GrowthMindsetClips Legal</title>
+<title>GrowthMindsetClips</title>
+<link rel="icon" href="icon.png">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400&display=swap">
-<style>
-  :root {
-    --bg: #F6F5F1;
-    --surface: #ECEAE3;
-    --ink: #1F1E1A;
-    --muted: #625F55;
-    --accent: #2F5D50;
-    --rule: #D6D3C8;
-    --code-bg: #E6E3DA;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --bg: #171819; --surface: #1F2123; --ink: #E8E6DF; --muted: #A09D94;
-      --accent: #7FB8A2; --rule: #34373A; --code-bg: #24272A;
-    }
-  }
-  :root[data-theme="dark"] {
-    --bg: #171819; --surface: #1F2123; --ink: #E8E6DF; --muted: #A09D94;
-    --accent: #7FB8A2; --rule: #34373A; --code-bg: #24272A;
-  }
-  * { box-sizing: border-box; }
-  body { margin: 0; background: var(--bg); color: var(--ink); font-family: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif; font-size: 16px; line-height: 1.6; padding-block: 3rem 6rem; padding-inline: 1.25rem; }
-  .frame { max-width: 720px; margin: 0 auto; }
-  header { display: flex; flex-direction: column; gap: .4rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--rule); margin-bottom: 2.5rem; }
-  .kicker { font-family: "IBM Plex Mono", Consolas, monospace; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
-  h1 { font-family: "Source Serif 4", Georgia, serif; font-size: clamp(1.7rem, 4vw, 2.2rem); font-weight: 600; margin: 0; text-wrap: balance; }
-  .tagline { color: var(--muted); max-width: 52ch; }
-  nav { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .9rem; }
-  nav a { font-size: .82rem; padding: .35rem .8rem; border-radius: 100px; border: 1px solid var(--rule); background: var(--surface); color: var(--ink); text-decoration: none; }
-  nav a:hover, nav a:focus-visible { border-color: var(--accent); color: var(--accent); outline: none; }
-  section + section { margin-top: 3rem; padding-top: 3rem; border-top: 1px solid var(--rule); }
-  .eyebrow { font-family: "IBM Plex Mono", Consolas, monospace; font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: .4rem; }
-  h2 { font-family: "Source Serif 4", Georgia, serif; font-size: 1.55rem; font-weight: 600; margin: 0 0 1.2rem; text-wrap: balance; }
-  h3 { font-family: "Source Serif 4", Georgia, serif; font-size: 1.1rem; font-weight: 600; margin: 1.8rem 0 .5rem; }
-  p, li { max-width: 65ch; }
-  p { margin: 0 0 1rem; }
-  ul { margin: 0 0 1rem; padding-left: 1.2rem; }
-  li { margin-bottom: .4rem; }
-  dl { display: grid; grid-template-columns: max-content 1fr; gap: .5rem 1.4rem; background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 1rem 1.2rem; margin: 1rem 0 1.4rem; overflow-x: auto; }
-  dt { font-family: "IBM Plex Mono", Consolas, monospace; font-size: .85rem; color: var(--accent); white-space: nowrap; }
-  dd { margin: 0; font-size: .93rem; }
-  a { color: var(--accent); }
-  footer { margin-top: 4rem; padding-top: 1.5rem; border-top: 1px solid var(--rule); color: var(--muted); font-size: .85rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: .5rem; }
-  @media (max-width: 480px) { dl { grid-template-columns: 1fr; } }
-</style>
-
 <div class="frame">
   <header>
-    <span class="kicker">GrowthMindsetClips</span>
-    <h1>Terms of Service &amp; Privacy Policy</h1>
-    <p class="tagline">A single-operator publishing tool that turns long-form podcast episodes into short vertical clips and schedules them on the operator's own YouTube, TikTok and Instagram accounts.</p>
+    <span class="kicker">Growth Mindset Clips</span>
+    <h1>GrowthMindsetClips</h1>
+    <p class="lede">GrowthMindsetClips is a publishing tool that turns long-form podcast episodes into short vertical clips and posts them to the Growth Mindset Clips channel accounts. It is operated by a single person, who reviews every clip before it is published.</p>
     <nav>
-      <a href="#terms">Terms of Service</a>
-      <a href="#privacy">Privacy Policy</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-of-service.html">Terms of Service</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
 
-  <section id="terms">
-    <div class="eyebrow">Effective 2026-09-13</div>
-    <h2>Terms of Service</h2>
-    <p>GrowthMindsetClips is a private automation operated by its owner for the channel <em>Growth Mindset Clips</em>. It is not a public product, is not offered to third parties, and has no user accounts other than the operator's own social media accounts.</p>
-
-    <h3>What the tool does</h3>
-    <p>The tool selects segments from publicly available podcast episodes, edits them into short vertical clips with captions and attribution to the original creator, and publishes those clips to the operator's own accounts on YouTube, TikTok and Instagram, at times the operator sets. Every clip is reviewed by the operator before or shortly after it is scheduled, and the operator can edit, reschedule or delete any clip from each platform's own tools at any time.</p>
-
-    <h3>Who can use it</h3>
-    <p>Only the operator. The application is not distributed, cannot be installed or authorized by other people, and does not expose any public interface, sign-up or API.</p>
-
-    <h3>Platform rules</h3>
-    <p>Publishing follows each platform's terms and content guidelines: YouTube Terms of Service and API Services Terms, TikTok Terms of Service and Content Sharing Guidelines, and Meta Platform Terms. Content that a platform's guidelines prohibit is not published.</p>
-
-    <h3>No warranty</h3>
-    <p>The tool is provided as is, for the operator's own use, and may be changed, paused or discontinued at any time.</p>
-  </section>
-
-  <section id="privacy">
-    <div class="eyebrow">Effective 2026-09-13</div>
-    <h2>Privacy Policy</h2>
-    <p>This tool connects only to accounts that belong to the operator. It does not collect, process, sell or share personal data of any other person. It has no visitors, no analytics, no advertising and no third-party trackers.</p>
-
-    <h3>What it accesses</h3>
-    <dl>
-      <dt>YouTube</dt><dd>Reads the operator's channel and uploads videos to it (YouTube Data API, <code>youtube.upload</code> and <code>youtube.readonly</code> scopes).</dd>
-      <dt>TikTok</dt><dd>Reads basic profile information to confirm which account is connected (<code>user.info.basic</code>) and posts videos to that account (<code>video.upload</code>, <code>video.publish</code>). Before each post the operator sets title, privacy level and interaction settings as required by TikTok's Content Sharing Guidelines.</dd>
-      <dt>Instagram</dt><dd>Reads the connected professional account (<code>instagram_business_basic</code>) and publishes Reels to it (<code>instagram_business_content_publish</code>).</dd>
-    </dl>
-
-    <h3>What it stores</h3>
-    <p>OAuth access and refresh tokens for the operator's own accounts, kept on the operator's own computer and used only to make the calls listed above. Clip files and their captions are stored locally until they are published, then deleted. No data is transmitted to any party other than the platform that receives the post.</p>
-
-    <h3>What it does not do</h3>
-    <ul>
-      <li>No access to any account other than the operator's.</li>
-      <li>No collection of data about viewers, followers or other users.</li>
-      <li>No use of platform data to train models, build profiles or for any purpose beyond publishing the operator's own clips.</li>
-      <li>No sharing, selling or transfer of data to third parties.</li>
-    </ul>
-
-    <h3>Data retention and deletion</h3>
-    <p>Tokens are kept while the account stays connected and are deleted when access is revoked. The operator can revoke access at any time from YouTube (Google Account &rarr; Security &rarr; Third-party access), TikTok (Settings &rarr; Security &rarr; Manage app permissions) or Instagram (Settings &rarr; Apps and websites). Revoking access invalidates the stored tokens immediately. To request deletion of any data held by this tool, write to the contact below; requests are handled within 30 days.</p>
-
-    <h3>Changes</h3>
-    <p>If this policy changes, the new version is published at this address with a new effective date.</p>
-  </section>
-
   <section id="contact">
     <div class="eyebrow">Contact</div>
     <h2>Questions and requests</h2>
-    <p>Operator: Kevin Marcacini. Questions about these terms, this policy, or a data deletion request: <a href="mailto:kevinmarcacini@gmail.com">kevinmarcacini@gmail.com</a>.</p>
+    <p>Operator: Kevin Marcacini. Write to <a href="mailto:kevinmarcacini@gmail.com">kevinmarcacini@gmail.com</a>.</p>
   </section>
 
   <footer>
     <span>GrowthMindsetClips &mdash; single-operator publishing tool</span>
-    <a href="mailto:kevinmarcacini@gmail.com">kevinmarcacini@gmail.com</a>
+    <span><a href="privacy-policy.html">Privacy Policy</a> &middot; <a href="terms-of-service.html">Terms of Service</a></span>
   </footer>
 </div>
-
 </body>
 </html>

@@ -1,4 +1,5 @@
 <!doctype html>
+<!-- NOME_DO_APP = GrowthMindsetClips. TROCAR AQUI se o nome no painel do TikTok for outro. -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -47,7 +48,7 @@
 
   <section class="card" id="connect">
     <h2>1. Connect your TikTok account</h2>
-    <p class="note">You will be sent to TikTok to sign in and approve access. We ask for permission to read your basic profile and to post videos on your behalf. See the <a href="index.html#privacy">Privacy Policy</a>.</p>
+    <p class="note">You will be sent to TikTok to sign in and approve access. We ask for permission to read your basic profile and to post videos on your behalf. See the <a href="privacy-policy.html">Privacy Policy</a>.</p>
     <div class="row">
       <button id="btn-connect">Continue with TikTok</button>
       <button id="btn-logout" class="ghost" hidden>Disconnect</button>
@@ -78,14 +79,16 @@
     <div class="status" id="status" hidden></div>
   </section>
 
-  <p class="note">Single-operator tool. <a href="index.html#terms">Terms of Service</a> &middot; <a href="index.html#privacy">Privacy Policy</a></p>
+  <p class="note">Single-operator tool. <a href="terms-of-service.html">Terms of Service</a> &middot; <a href="privacy-policy.html">Privacy Policy</a></p>
 </div>
 
 <script>
 (function () {
-  var API = "https://wok-deflected-scoured.ngrok-free.dev";
+  var API = "https://wok-deflected-scoured.ngrok-free.dev"; // so o backend local (publicar); o redirect do login NAO usa mais o ngrok
+  // TROCAR AQUI se a origem do site mudar (ex.: https://growthmindsetclips.github.io). Tem de ser a mesma do site no painel do TikTok.
+  var ORIGEM_DO_SITE = "https://growthmindsetclips.github.io";
   var CLIENT_KEY = "sbawkhwflbs66prje7";
-  var REDIRECT = API + "/tiktok-callback";
+  var REDIRECT = ORIGEM_DO_SITE + "/callback.html";
   var SCOPES = "user.info.basic,video.upload,video.publish";
   var $ = function (id) { return document.getElementById(id); };
   var hdr = { "ngrok-skip-browser-warning": "1", "Content-Type": "application/json" };
@@ -97,6 +100,7 @@
 
   $("btn-connect").onclick = function () {
     var state = Math.random().toString(36).slice(2);
+    try { sessionStorage.setItem("tiktok_state", state); } catch (e) {}
     location.href = "https://www.tiktok.com/v2/auth/authorize/?client_key=" + CLIENT_KEY +
       "&scope=" + encodeURIComponent(SCOPES) + "&response_type=code" +
       "&redirect_uri=" + encodeURIComponent(REDIRECT) + "&state=" + state + "&disable_auto_auth=1";

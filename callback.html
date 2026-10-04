@@ -1,0 +1,46 @@
+<!doctype html>
+<!-- NOME_DO_APP = GrowthMindsetClips. TROCAR AQUI se o nome no painel do TikTok for outro. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Authorization code &mdash; GrowthMindsetClips</title>
+<link rel="icon" href="icon.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="frame">
+  <header>
+    <span class="kicker">GrowthMindsetClips</span>
+    <h1>Authorization code</h1>
+    <nav><a href="index.html">Home</a></nav>
+  </header>
+
+  <section>
+    <p id="msg"></p>
+    <div class="codebox" id="code" hidden></div>
+    <button id="copy" hidden>Copy code</button>
+    <p id="next" hidden>Paste this code into the terminal of the tool. Nothing on this page is sent anywhere; the code only exists in your browser.</p>
+  </section>
+</div>
+<script>
+(function () {
+  var q = new URLSearchParams(location.search);
+  var code = q.get("code"), err = q.get("error"), state = q.get("state");
+  var $ = function (id) { return document.getElementById(id); };
+  var saved = null;
+  try { saved = sessionStorage.getItem("tiktok_state"); } catch (e) {}
+  if (!code) {
+    $("msg").textContent = err ? "TikTok returned an error: " + err : "No authorization code in this address.";
+    return;
+  }
+  $("msg").textContent = (saved && state && saved !== state) ? "Warning: the state value does not match the one this browser sent. Do not use this code." : "TikTok authorization received. Your code:";
+  $("code").textContent = code; $("code").hidden = false;
+  $("copy").hidden = false; $("next").hidden = false;
+  $("copy").onclick = function () {
+    navigator.clipboard.writeText(code).then(function () { $("copy").textContent = "Copied"; });
+  };
+})();
+</script>
+</body>
+</html>
