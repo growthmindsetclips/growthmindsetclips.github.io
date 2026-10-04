@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Authorization code &mdash; GrowthMindsetClips</title>
+<title>Connecting &mdash; GrowthMindsetClips</title>
 <link rel="icon" href="icon.png">
 <link rel="stylesheet" href="style.css">
 </head>
@@ -12,19 +12,20 @@
 <div class="frame">
   <header>
     <span class="kicker">GrowthMindsetClips</span>
-    <h1>Authorization code</h1>
-    <nav><a href="index.html">Home</a></nav>
+    <h1>Connecting your TikTok account</h1>
+    <nav><a href="app.html">Back to the app</a></nav>
   </header>
 
   <section>
-    <p id="msg"></p>
+    <p id="msg">Finishing the sign-in...</p>
     <div class="codebox" id="code" hidden></div>
     <button id="copy" hidden>Copy code</button>
-    <p id="next" hidden>Paste this code into the terminal of the tool. Nothing on this page is sent anywhere; the code only exists in your browser.</p>
+    <p id="next" hidden>The app could not reach its local helper. Paste this code into the terminal of the tool (manual fallback). The code is not stored anywhere by this page.</p>
   </section>
 </div>
 <script>
 (function () {
+  var API = "https://wok-deflected-scoured.ngrok-free.dev"; // mesmo backend local do app.html (TROCAR junto se mudar)
   var q = new URLSearchParams(location.search);
   var code = q.get("code"), err = q.get("error"), state = q.get("state");
   var $ = function (id) { return document.getElementById(id); };
@@ -34,12 +35,28 @@
     $("msg").textContent = err ? "TikTok returned an error: " + err : "No authorization code in this address.";
     return;
   }
-  $("msg").textContent = (saved && state && saved !== state) ? "Warning: the state value does not match the one this browser sent. Do not use this code." : "TikTok authorization received. Your code:";
-  $("code").textContent = code; $("code").hidden = false;
-  $("copy").hidden = false; $("next").hidden = false;
-  $("copy").onclick = function () {
-    navigator.clipboard.writeText(code).then(function () { $("copy").textContent = "Copied"; });
-  };
+  history.replaceState(null, "", "callback.html"); // tira o code da barra de enderecos
+  if (!saved || !state || saved !== state) {
+    $("msg").textContent = "The state value does not match the one this browser sent. Sign-in stopped; go back to the app and try again.";
+    return;
+  }
+  try { sessionStorage.removeItem("tiktok_state"); } catch (e) {}
+  function fallback(why) {
+    $("msg").textContent = why + " Your code:";
+    $("code").textContent = code; $("code").hidden = false;
+    $("copy").hidden = false; $("next").hidden = false;
+    $("copy").onclick = function () { navigator.clipboard.writeText(code).then(function () { $("copy").textContent = "Copied"; }); };
+  }
+  fetch(API + "/api/exchange", {
+    method: "POST",
+    headers: { "Content-Type": "application/json", "ngrok-skip-browser-warning": "1" },
+    body: JSON.stringify({ code: code })
+  }).then(function (r) {
+    return r.json().then(function (j) { return { ok: r.ok, json: j }; });
+  }).then(function (r) {
+    if (r.ok && r.json.ok) { $("msg").textContent = "Connected. Opening the app..."; location.replace("app.html?connected=1"); return; }
+    fallback("TikTok did not accept the sign-in (" + ((r.json.detalhe && (r.json.detalhe.error_description || r.json.detalhe.error)) || r.json.error || "error") + ").");
+  }).catch(function () { fallback("The local helper is not running."); });
 })();
 </script>
 </body>
